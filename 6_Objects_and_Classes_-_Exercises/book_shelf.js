@@ -21,12 +21,16 @@ function bookShelf(input) {
         }
     }
 
+    console.log(shelfs)
+
     let shelfsArr = Object.entries(shelfs)
     .sort((nameA, nameB) => {
         let [_termA , definitionA] = nameA; // слагаме 1 "_" преди името за да кажем че е неизползвана променлива
         let [_termB , definitionB] = nameB; // слагаме 1 "_" преди името за да кажем че е неизползвана променлива
         return definitionB.length - definitionA.length
     })
+
+    console.log(shelfsArr)
 
     for (const [key, value] of shelfsArr) {
         // console.log(`${key}`); // +
