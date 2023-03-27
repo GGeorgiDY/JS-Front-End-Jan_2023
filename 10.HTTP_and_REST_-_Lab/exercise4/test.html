@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+    <h1>Test</h1>
+    <script>
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve({id: 1, name: 'Kiril'}) // това си представяме че е нещо което ще се върне от нашия back-end
+            }, 1000);
+        }).then((res) => { // това което сме подали горе ще го получим тук като обект
+            console.log(res);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+        .finally(() => { // това служи ако искаме да направиме нещо задължително след самата заявка. Изпълнява се без значение дали е успешна заявката.
+            console.log('Goes here anyway!');
+        })
+    </script>
+</body>
+</html>
