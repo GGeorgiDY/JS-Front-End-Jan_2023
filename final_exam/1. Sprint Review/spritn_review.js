@@ -68,11 +68,11 @@ function SprintReview (input) {
                 console.log(`Assignee ${assignee} does not exist on the board!`)
                 continue
             }
-            if (Number(index) >= assignees[assignee].length - 1) {
+            if (Number(index) >= assignees[assignee].length || Number(index) < 0) {
                 console.log("Index is out of range!")
             }
 
-            assignees[assignee].splice(index) // нарочно го махам така, иначе с delete, на мястото на втория вложен речник, ще има null
+            assignees[assignee].splice(index, 1) // нарочно го махам така, иначе с delete, на мястото на втория вложен речник, ще има null
         }
     }
 
