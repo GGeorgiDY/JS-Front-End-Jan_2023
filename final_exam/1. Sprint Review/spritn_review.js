@@ -15,9 +15,10 @@ function SprintReview (input) {
         if (!(assignee in assignees)) {
             assignees[assignee] = []  
         } 
-        if (!(taskId in assignees[assignee] )) {
-            assignees[assignee].push({taskId, title, status, "points": estimatedPoints * 1})
-        }
+        // if (!(taskId in assignees[assignee] )) {
+        //     assignees[assignee].push({taskId, title, status, "points": estimatedPoints * 1})
+        // }
+        assignees[assignee].push({taskId, title, status, "points": estimatedPoints * 1})
     }
 
     // console.log(JSON.stringify(assignees))
@@ -72,7 +73,7 @@ function SprintReview (input) {
                 console.log("Index is out of range!")
             }
 
-            assignees[assignee].splice(index, 1) // нарочно го махам така, иначе с delete, на мястото на втория вложен речник, ще има null
+            assignees[assignee].splice(Number(index), 1) // нарочно го махам така, иначе с delete, на мястото на втория вложен речник, ще има null
         }
     }
 
