@@ -25,11 +25,11 @@ function solve() {
 
             const asd = e.currentTarget.parentNode.parentNode
 
-            titleInput.textContent = title
-            descriptionInput.textContent = description
-            // labelInput.textContent = label
-            estimationPointsInput.textContent = points
-            assigneeInput.textContent = assignee
+            titleInput.value = title
+            descriptionInput.value = description
+            labelInput.value = label
+            estimationPointsInput.value = points
+            assigneeInput.value = assignee
 
             titleInput.disabled = true;
             descriptionInput.disabled = true;
@@ -52,7 +52,7 @@ function solve() {
                 // clear all input fields in the Sprint Plannig section
                 titleInput.value = ''
                 descriptionInput.value = ''
-                // labelInput.value = ''
+                labelInput.value = ''
                 estimationPointsInput.value = ''
                 assigneeInput.value = ''
     
@@ -140,7 +140,7 @@ function solve() {
         // clear all input fields in the Sprint Plannig section
         titleInput.value = ''
         descriptionInput.value = ''
-        // labelInput.value = ''
+        labelInput.value = ''
         estimationPointsInput.value = ''
         assigneeInput.value = ''
 
