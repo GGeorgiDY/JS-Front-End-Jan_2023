@@ -12,18 +12,67 @@ function solve() {
   const previewContainer = document.getElementById('preview-list');
 
   let inputsInfo = {
-    firstNameInput: null,
-    lastNameInput: null,
-    ageInput: null,
-    storyTitleInput: null,
-    genreInput: null,
-    yourStoryInput: null
+    'firstNameInput': null,
+    'lastNameInput': null,
+    'ageInput': null,
+    'storyTitleInput': null,
+    'genreInput': null,
+    'yourStoryInput': null
   }
 
   publishButton.addEventListener('click', publishHandler)
 
   function publishHandler(e) {
     e.preventDefault()
+
+    function editButtonHandler(e) {
+      e.preventDefault();
+  
+      // правим така че всяка от инфррмациите в инпут полетата да се появи в тях
+      firstNameInput.value = inputsInfo['firstNameInput'];
+      lastNameInput.value = inputsInfo['lastNameInput'];
+      ageInput.value = inputsInfo['ageInput'];
+      storyTitleInput.value = inputsInfo['storyTitleInput'];
+      genreInput.value = inputsInfo['genreInput'];
+      yourStoryInput.value = inputsInfo['yourStoryInput'];
+  
+      // деактивираме бутоните в publish полето
+      saveButton.disabled = true;
+      editButton.disabled = true;
+      deleteButton.disabled = true;
+
+      // активиране на Publish бутона
+      publishButton.disabled = false;
+
+      // премахване на информацията от preview полето за съответния филм
+      e.currentTarget.parentNode.remove()
+    }
+    
+    function saveButtonHandler(e) {
+      e.preventDefault();
+
+      // изтривам всичко под таг-а с id = main
+      const mainField = document.getElementById('main')
+      // mainField.childNodes.remove()
+      while (mainField.firstChild) {
+        mainField.removeChild(mainField.lastChild)
+      }
+
+      // създавам си нова променлива която за качам на таг-а с id = main
+      const finalMessage = document.createElement('h1')
+      finalMessage.textContent = "Your scary story is saved!"
+      mainField.appendChild(finalMessage)
+    }
+
+    function deleteButtonHandler(e) {
+      e.preventDefault();
+
+      // премахване на информацията от preview полето за съответния филм
+      e.currentTarget.parentNode.remove()
+
+      // активиране на Publish бутона
+      publishButton.disabled = false;
+    }
 
     // get the value for every input field
     let firstName = firstNameInput.value;
@@ -34,12 +83,12 @@ function solve() {
     let yourStory = yourStoryInput.value;
 
     inputsInfo = {
-      firstNameInput: firstNameInput.value,
-      lastNameInput: lastNameInput.value,
-      ageInput: ageInput.value,
-      storyTitleInput: storyTitleInput.value,
-      genreInput: genreInput.value,
-      yourStoryInput: yourStoryInput.value
+      'firstNameInput': firstNameInput.value,
+      'lastNameInput': lastNameInput.value,
+      'ageInput': ageInput.value,
+      'storyTitleInput': storyTitleInput.value,
+      'genreInput': genreInput.value,
+      'yourStoryInput': yourStoryInput.value
     }
 
     // check if all inputs are valid
@@ -69,17 +118,17 @@ function solve() {
     let yourStoryInfo = document.createElement('p')
     yourStoryInfo.textContent = `${yourStory}`
 
-    let saveButton = document.createElement('button')
+    const saveButton = document.createElement('button')
     saveButton.textContent = "Save Story"
     saveButton.classList.add("save-btn")
     saveButton.addEventListener('click', saveButtonHandler)
 
-    let editButton = document.createElement('button')
+    const editButton = document.createElement('button')
     editButton.textContent = "Edit Story"
     editButton.classList.add("edit-btn")
     editButton.addEventListener('click', editButtonHandler)
 
-    let deleteButton = document.createElement('button')
+    const deleteButton = document.createElement('button')
     deleteButton.textContent = "Delete Story"
     deleteButton.classList.add("delete-btn")
     deleteButton.addEventListener('click', deleteButtonHandler)
@@ -107,25 +156,5 @@ function solve() {
 
     // disable publish button
     publishButton.disabled = true
-
   }
-
-  function saveButtonHandler(e) {
-    return
-  }
-
-  function editButtonHandler(e) {
-    e.preventDefault();
-    console.log(inputsInfo)
-    firstNameInput.value = inputsInfo[firstNameInput];
-    lastNameInput.value = inputsInfo[lastNameInput];
-    // firstNameInput.value = inputsInfo[firstNameInput];
-    // firstNameInput.value = inputsInfo[firstNameInput];
-    // firstNameInput.value = inputsInfo[firstNameInput];
-  }
-
-  function deleteButtonHandler(e) {
-    return
-  }
-
 }
