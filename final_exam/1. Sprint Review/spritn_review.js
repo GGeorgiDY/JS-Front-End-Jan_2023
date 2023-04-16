@@ -71,6 +71,7 @@ function SprintReview (input) {
             }
             if (Number(index) >= assignees[assignee].length || Number(index) < 0) {
                 console.log("Index is out of range!")
+                continue
             }
 
             assignees[assignee].splice(Number(index), 1) // нарочно го махам така, иначе с delete, на мястото на втория вложен речник, ще има null
